@@ -1,64 +1,67 @@
 import React, { useState } from 'react';
-import formPage from './formPage.css';
+import './formPage.css';
 
 const Home = () => {
-    const [date, setDate] = useState(formatDate(new Date()));
-
+    const [message, setMessage] = useState('');
+    const [email, setEmail] = useState('');
     const [isSent, setIsSent] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsSent(true);
+
+        
+        const response = await fetch('/home', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: message,
+                email: email
+            })
+        });
+
+        if (response.ok) {
+            setIsSent(true);
+        } else {
+            // error handling
+        }
     };
+
     const handleRefresh = () => {
-        window.location.reload(); 
+        window.location.reload();
     };
+
     if (isSent) {
         return (
-        
             <div>
-                <h1>Your message to future has been sent</h1>
+                <h1>Your message has been sent</h1>
                 <button onClick={handleRefresh} className="btnSubmit">Send another message</button>
             </div>
         );
     }
 
-    function formatDate(date) {
-        const options = { day: 'numeric', month: 'long', year: 'numeric' };
-        return new Date(date).toLocaleDateString('en-GB', options);
-    }
     return (
         <div className="formContainer">
             <section>
-                <h1>Give yourself a future promise</h1>
-                <h4>Message from {date}</h4>
-                <br />
+                <h1>Send a Message</h1>
             </section>
             <form onSubmit={handleSubmit}>
                 <textarea
-                    placeholder="  Hey me from future,"
+                    placeholder="Enter your message here"
                     required
                     className="formPage"
-                >
-                    Hey me from future,
-                </textarea>
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                />
 
                 <br />
-                <label>Deliver In:</label>
-                <br />
-             
-                <input type="date" className="date-input" required />
-
-                <br />
-                <br />
-
-                <input type="email" className="emailInput" required placeholder="Please enter an email" />
+                <input type="email" className="emailInput" required placeholder="Please enter an email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <br />
                 <br />
 
                 <button className="btnSubmit">Send</button>
             </form>
-         
         </div>
     );
 };
