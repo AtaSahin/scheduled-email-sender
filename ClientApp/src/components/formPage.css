@@ -1,0 +1,66 @@
+﻿.formPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    height: 30svh;
+    width: 90%;
+    background-color: #f5f5f5;
+    font-size: 1.5em;
+}
+
+    .formPage:hover {
+      border-color: #007bff;
+    }
+.btnSubmit{
+background-color: #007bff;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    margin: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+    .btnSubmit:hover {
+      background-color: #0056b3;
+    }
+
+.emailInput{
+width: 40%;
+    padding: 5px;
+   
+    font-size: 1.5em;
+    border-radius: 10px;
+    border: 1px solid #007bff;
+}
+
+    .emailInput:hover {
+        border-color: #0056b3;
+    }
+
+.date-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+
+.no-date-input[type="date"] {
+   
+}
+
+.formContainer {
+    width: 100%;
+    background-color: #EBD9B4;
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 1.1);
+}
+
+   
+
+   
