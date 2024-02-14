@@ -1,0 +1,55 @@
+﻿.fetch-data-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color:white;
+    color:black;
+}
+
+    .fetch-data-container form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .fetch-data-container h2 {
+        margin-bottom: 20px;
+    }
+
+    .fetch-data-container label {
+        margin-bottom: 5px;
+    }
+
+    .fetch-data-container input {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+.credit-card-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fetch-data-container button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.order-confirmation {
+    text-align: center;
+}
+
+    .order-confirmation h2 {
+        margin-bottom: 10px;
+    }
+
+    .order-confirmation p {
+        color: green;
+    }

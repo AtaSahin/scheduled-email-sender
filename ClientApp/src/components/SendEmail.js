@@ -52,7 +52,7 @@ const ProductList = () => {
                 placeholder="Search by product name"
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="search-container"
+                className="search-input" 
             />
             <div className="category-buttons">
                 {categories.map(category => (
@@ -69,12 +69,13 @@ const ProductList = () => {
                             <div className="product-category">{product.category}</div>
                             <div className="product-description">{product.description.length > 100 ? product.description.substring(0, 100) + '...' : product.description}</div>
                             {product.description.length > 100 && (
-                                <button onClick={() => handleViewMore(product)}>View More</button>
+                                <button onClick={() => handleViewMore(product)} className="view-more-button">View More</button>
+
                             )}
                             <div className="button-container">
                                 <button>Add to Cart</button>
                                 <Link to="/fetch-data">
-                                    <button>Checkout</button> {/* Link to Checkout component */}
+                                    <button>Checkout</button> 
                                 </Link>
                             </div>
                         </div>

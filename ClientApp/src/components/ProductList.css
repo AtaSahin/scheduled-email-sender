@@ -1,26 +1,69 @@
 ﻿.product-list-container {
-    padding: 20px;
-    background-color: #f5f5f5; 
+    background-color: #fff; 
+    border-radius: 10px; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+    padding: 30px;
 }
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
 
+.view-more-button {
+    background-color: #1b6ec2;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .view-more-button:hover {
+        background-color: #0056b3;
+    }
+
 .search-container {
     margin-bottom: 20px;
+    display: flex; 
+    align-items: center;
 }
 
 .search-input {
-    width: 100%;
-    padding: 10px;
+    background-color: #f5f5f5;
+    border: none; 
+    border-radius: 30px; 
+    padding: 10px 15px; 
     font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+
+    display: flex; 
+    justify-content: center; 
+    width: 100%; 
+    margin-bottom:20px;
 }
+
+    .search-input:focus {
+        outline: none; 
+        box-shadow: 0 0 0 2px #007bff; 
+    }
+
+
+.search-button {
+    background-color: #007bff; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+    .search-button:hover {
+        background-color: #0056b3; 
+    }
+
 
 .product-card {
     border: none; 
@@ -123,4 +166,27 @@
 
         .button-container button:hover {
             background-color: #0056b3;
+        }
+
+.category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; 
+}
+
+    .category-buttons button {
+        background-color: #333; 
+        color: #fff; 
+        font-family: "Roboto", sans-serif; 
+        font-size: 16px; 
+        padding: 10px 20px; 
+        border: none;
+        border-radius: 4px; 
+        cursor: pointer;
+        transition: all 0.2s ease-in-out; 
+    }
+
+        .category-buttons button:hover {
+            background-color: #222; 
+          
         }

@@ -1,28 +1,32 @@
-/* Provide sufficient contrast against white background */
-a {
-color:white;
-  background-color: white;
-
+body {
+    background: linear-gradient(to bottom, #ffffff, black);
+    color: #ffffff;
+    min-height: 100vh;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+a {
+    color: #ffffff;
+}
 
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem #ffffff, 0 0 0 0.25rem #258cfb;
 }
 
 code {
-    color: #E01A76;
-    color: white;
+    color: #e01a76;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #ffffff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+    transition: background-color 0.3s ease;
 }
 
-body {
-    background-color: #F9EFDB;
-    color: white;
-}
-
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
