@@ -1,43 +1,41 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Net;
-using System.Net.Mail;
-using System.Threading.Tasks;
+﻿using MailKit.Net.Smtp;
+using MailKit.Security;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using MimeKit;
+using MimeKit.Text;
 
 namespace react_asp_mail.Controllers
 {
+    [Route("api/email")]
     [ApiController]
-    [Route("[controller]")]
     public class EmailController : ControllerBase
     {
-        [HttpPost("send-email")]
-        public async Task<IActionResult> SendEmail([FromBody] EmailRequest request)
+        [HttpPost]
+        public IActionResult SendEmail(string body)
         {
             try
             {
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress("emailata8@gmail.com");
-                mail.To.Add(request.ReceiverEmail);
-                mail.Subject = "Message from Your Application";
-                mail.Body = request.Message;
+                var email = new MimeMessage();
+                email.From.Add(MailboxAddress.Parse("emailata8@gmail.com"));
+                email.To.Add(MailboxAddress.Parse("emailata8@gmail.com"));
+                email.Subject = "Test Email";
+                email.Body = new TextPart(TextFormat.Html) { Text = body };
 
-                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
-                smtpClient.Credentials = new NetworkCredential("emailata8@gmail.com", "hcom fcbt cijz ecxt");
-                smtpClient.EnableSsl = true;
 
-                await smtpClient.SendMailAsync(mail);
+                using var smtp = new SmtpClient();
 
+                    smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+                smtp.Authenticate("emailata8@gmail.com", "hcom fcbt cijz ecxt");
+                smtp.Send(email);
+                smtp.Disconnect(true);
                 return Ok();
+               
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
-                return StatusCode(500, $"Failed to send email: {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
-    }
-
-    public class EmailRequest
-    {
-        public string ReceiverEmail { get; set; }
-        public string Message { get; set; }
     }
 }

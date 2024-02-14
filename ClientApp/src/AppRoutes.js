@@ -1,5 +1,5 @@
 import { Counter } from "./components/Counter";
-import { FetchData } from "./components/FetchData";
+import FetchData  from "./components/FetchData";
 import Home from "./components/Home";
 import SendEmail from "./components/SendEmail";
 
